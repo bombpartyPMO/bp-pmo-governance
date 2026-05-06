@@ -58,10 +58,6 @@
   ],
   "agenda": [
     {
-      "item": "Review at-risk Customer Portal security dependency",
-      "tone": "Red"
-    },
-    {
       "item": "Approve or defer active portfolio change requests",
       "tone": "Amber"
     },
