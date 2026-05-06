@@ -1,16 +1,6 @@
 {
   "projects": [],
-  "priority": [
-    {
-      "request": "Compliance Evidence Hub",
-      "sponsor": "Legal",
-      "alignment": 5,
-      "value": 4,
-      "urgency": 5,
-      "complexity": 2,
-      "rec": "Approve"
-    }
-  ],
+  "priority": [],
   "decisions": [
     {
       "title": "Approve portal pilot scope",
