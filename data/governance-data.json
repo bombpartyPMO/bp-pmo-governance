@@ -4,15 +4,6 @@
   "decisions": [],
   "changes": [
     {
-      "title": "Add SSO requirement to portal pilot",
-      "project": "Customer Portal Modernization",
-      "type": "Scope",
-      "requester": "Security",
-      "impact": "Adds security dependency and build effort",
-      "status": "Pending Approval",
-      "target": "May 13, 2026"
-    },
-    {
       "title": "Reduce discovery workshop count",
       "project": "Finance Close Automation",
       "type": "Budget",
