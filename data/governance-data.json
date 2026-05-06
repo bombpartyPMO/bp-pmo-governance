@@ -30,17 +30,7 @@
     }
   ],
   "decisions": [],
-  "changes": [
-    {
-      "title": "Reduce discovery workshop count",
-      "project": "Finance Close Automation",
-      "type": "Budget",
-      "requester": "Sponsor",
-      "impact": "Saves cost, increases signoff risk",
-      "status": "Approved",
-      "target": "May 8, 2026"
-    }
-  ],
+  "changes": [],
   "actions": [
     {
       "action": "Confirm SSO decision path for portal pilot",
