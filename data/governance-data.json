@@ -2,15 +2,6 @@
   "projects": [],
   "priority": [
     {
-      "request": "Vendor Portal Phase 2",
-      "sponsor": "Operations",
-      "alignment": 5,
-      "value": 4,
-      "urgency": 4,
-      "complexity": 3,
-      "rec": "Approve"
-    },
-    {
       "request": "Legacy Report Cleanup",
       "sponsor": "Finance",
       "alignment": 3,
