@@ -4,15 +4,6 @@
   "decisions": [],
   "changes": [
     {
-      "title": "Extend UAT by one week",
-      "project": "Retail Analytics Upgrade",
-      "type": "Timeline",
-      "requester": "QA Lead",
-      "impact": "Moves release from May 30 to Jun 6",
-      "status": "Review",
-      "target": "May 10, 2026"
-    },
-    {
       "title": "Add SSO requirement to portal pilot",
       "project": "Customer Portal Modernization",
       "type": "Scope",
