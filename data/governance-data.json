@@ -1,16 +1,6 @@
 {
   "projects": [
     {
-      "name": "Customer Portal Modernization",
-      "owner": "A. Rivera",
-      "phase": "Build",
-      "health": "At Risk",
-      "target": "Jun 28, 2026",
-      "pillar": "Customer Experience",
-      "dependency": "Security review before pilot",
-      "progress": 58
-    },
-    {
       "name": "Finance Close Automation",
       "owner": "M. Chen",
       "phase": "Discovery",
