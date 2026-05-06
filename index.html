@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BombParty PMO - Portfolio Governance</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --citron:#EAE753;--navy:#0F3053;--green:#3DB88B;--amber:#F0B63C;
+  --red:#E15D5D;--charcoal:#2C2C2C;--ice:#EEF8FF;--soft:#F7F9FC;
+  --purple:#6454C0;--teal:#008DA6;--line:rgba(15,48,83,0.10);
+  --line2:rgba(15,48,83,0.06);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Inter',Arial,sans-serif;color:var(--charcoal);background:var(--soft);line-height:1.55;font-size:14px;-webkit-font-smoothing:antialiased}
+.nav{position:sticky;top:0;z-index:100;background:rgba(247,249,252,.97);backdrop-filter:blur(20px);border-bottom:1px solid var(--line);padding:.7rem 2rem;display:flex;align-items:center;justify-content:space-between;gap:1rem}
+.nav-left,.nav-right{display:flex;align-items:center;gap:.8rem}
+.nav-logo{font-size:.65rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--navy);background:rgba(234,231,83,.42);border:1px solid rgba(234,231,83,.65);padding:4px 10px;border-radius:100px}
+.nav-title{font-size:.78rem;font-weight:500;color:var(--navy);opacity:.62}
+.nav-pill{display:flex;align-items:center;gap:5px;font-size:.55rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--navy);opacity:.58;background:#fff;border:1px solid var(--line);padding:4px 10px;border-radius:100px}
+.dot{width:5px;height:5px;border-radius:50%;background:var(--green)}
+.nav-date{font-size:.58rem;color:var(--navy);opacity:.4;letter-spacing:.04em;text-transform:uppercase}
+.nav-av{width:26px;height:26px;border-radius:50%;background:var(--navy);color:var(--citron);display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:800}
+.tabs{position:sticky;top:49px;z-index:90;background:var(--soft);border-bottom:1px solid var(--line);padding:0 2rem;display:flex;overflow-x:auto;scrollbar-width:none}
+.tabs::-webkit-scrollbar{display:none}
+.tab-btn{background:none;border:none;border-bottom:2px solid transparent;padding:.9rem 1.1rem;font-family:inherit;font-size:.6rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--navy);opacity:.38;cursor:pointer;white-space:nowrap}
+.tab-btn:hover{opacity:.66}.tab-btn.active{opacity:1;border-bottom-color:var(--navy)}
+.tab-num{opacity:.5;margin-right:4px}
+.main{max-width:1140px;margin:0 auto;padding:2.3rem 2rem 4rem}
+.pane{display:none}.pane.active{display:block}
+.pmo-hero{background:var(--navy);color:#fff;padding:1.75rem 1.85rem;border-radius:14px;margin-bottom:1.5rem;position:relative;overflow:hidden}
+.pmo-hero::before{content:'';position:absolute;top:-55%;right:-10%;width:420px;height:420px;background:radial-gradient(circle,rgba(234,231,83,.12) 0%,transparent 62%);pointer-events:none}
+.eyebrow{font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;color:var(--citron);margin-bottom:.45rem;font-weight:800}
+.pmo-hero h1{font-size:1.48rem;font-weight:700;line-height:1.2;margin-bottom:.35rem;color:#fff}
+.pmo-hero h1 .acc{color:var(--citron)}
+.pmo-hero p{color:rgba(255,255,255,.6);font-size:.78rem;max-width:650px}
+.hero-actions{display:flex;flex-wrap:wrap;gap:.7rem;margin-top:1.25rem;position:relative}
+.page-header{margin-bottom:1.45rem}
+.page-header h2{font-size:1.35rem;font-weight:750;color:var(--navy);letter-spacing:-.02em;margin-bottom:.35rem}
+.page-header p{font-size:.8rem;color:var(--navy);opacity:.52;line-height:1.6}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:1.1rem}.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:1.1rem}.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:.85rem}
+.kpi{background:#fff;border:1px solid var(--line);border-radius:12px;padding:1.15rem 1.25rem;min-height:108px}
+.kpi-label{font-size:.58rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--navy);opacity:.42;margin-bottom:.55rem}
+.kpi-value{font-size:2rem;font-weight:750;color:var(--navy);line-height:1}.kpi-sub{font-size:.65rem;color:var(--navy);opacity:.38;margin-top:.45rem}
+.section-block{background:#fff;border:1px solid var(--line);border-radius:14px;margin-bottom:1.25rem;overflow:hidden}
+.section-head{display:flex;align-items:flex-start;gap:1rem;padding:1.35rem 1.5rem 1.1rem;border-bottom:1px solid var(--line2)}
+.section-icon{width:44px;height:44px;flex-shrink:0;background:var(--ice);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:19px}
+.section-head-text h3{font-size:.86rem;font-weight:750;color:var(--navy);margin-bottom:.18rem}
+.section-head-text span{font-size:.72rem;color:var(--navy);opacity:.46}
+.section-actions{margin-left:auto;display:flex;gap:.55rem;align-items:center}
+.section-body{padding:1.35rem 1.5rem}.section-body.no-pad{padding:0}
+.btn{display:inline-flex;align-items:center;gap:5px;padding:.6rem 1.1rem;border-radius:8px;border:none;font-family:inherit;font-size:.74rem;font-weight:700;cursor:pointer;transition:opacity .15s;white-space:nowrap}
+.btn:hover{opacity:.85}.btn-navy{background:var(--navy);color:#fff}.btn-outline{background:#fff;color:var(--navy);border:1.5px solid rgba(15,48,83,.2)}.btn-soft{background:rgba(255,255,255,.12);color:#fff;border:1px solid rgba(255,255,255,.2)}
+.btn-sm{padding:.45rem .82rem;font-size:.68rem}
+.alert{border-left:3px solid var(--navy);background:rgba(15,48,83,.04);border-radius:0 8px 8px 0;padding:.75rem 1rem;font-size:.78rem;color:var(--navy);opacity:.78;margin-bottom:1rem;line-height:1.6}
+.alert.amber{border-color:var(--amber);background:rgba(240,182,60,.08);color:#78350F;opacity:1}.alert.red{border-color:var(--red);background:rgba(225,93,93,.07);color:#B91C1C;opacity:1}.alert.green{border-color:var(--green);background:rgba(61,184,139,.07);color:#065F46;opacity:1}
+.tbl-wrap{overflow-x:auto}table{width:100%;border-collapse:collapse;min-width:720px}
+thead th{padding:.72rem 1rem;text-align:left;font-size:.58rem;font-weight:800;letter-spacing:.07em;text-transform:uppercase;color:var(--navy);opacity:.46;background:var(--soft);border-bottom:1px solid var(--line)}
+tbody tr{border-bottom:1px solid var(--line2)}tbody tr:hover{background:rgba(15,48,83,.02)}tbody tr:last-child{border-bottom:none}
+td{padding:.82rem 1rem;font-size:.79rem;vertical-align:top;line-height:1.55}.td-bold{font-weight:700;color:var(--navy)}.td-muted{color:var(--navy);opacity:.48;font-size:.73rem}
+.badge{display:inline-flex;align-items:center;padding:3px 10px;border-radius:100px;font-size:.62rem;font-weight:700;letter-spacing:.03em;white-space:nowrap}
+.badge-blue{background:rgba(15,48,83,.08);color:var(--navy);border:1px solid var(--line)}.badge-green{background:rgba(61,184,139,.12);color:#065F46;border:1px solid rgba(61,184,139,.25)}.badge-red{background:rgba(225,93,93,.12);color:#B91C1C;border:1px solid rgba(225,93,93,.25)}.badge-amber{background:rgba(240,182,60,.15);color:#92400E;border:1px solid rgba(240,182,60,.3)}.badge-purple{background:rgba(100,84,192,.10);color:#403294;border:1px solid rgba(100,84,192,.2)}.badge-teal{background:rgba(0,141,166,.10);color:#006C80;border:1px solid rgba(0,141,166,.2)}.badge-gray{background:rgba(15,48,83,.05);color:#5E6C84;border:1px solid var(--line)}
+.score{font-weight:800;color:var(--navy);font-size:.9rem}.score small{font-size:.58rem;opacity:.45;font-weight:700}
+.roadmap{display:grid;gap:.8rem}.road-item{display:grid;grid-template-columns:145px 1fr 110px;gap:1rem;align-items:center;border:1px solid var(--line);border-radius:10px;padding:.8rem;background:#fff}
+.road-date{font-size:.65rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--navy);opacity:.48}.bar{height:10px;border-radius:100px;background:var(--soft);overflow:hidden;border:1px solid var(--line2)}
+.bar span{display:block;height:100%;border-radius:100px}.bar.green span{background:var(--green)}.bar.amber span{background:var(--amber)}.bar.red span{background:var(--red)}.bar.purple span{background:var(--purple)}
+.form-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem}.field{display:flex;flex-direction:column;gap:.35rem;margin-bottom:.9rem}
+.field.full{grid-column:1/-1}.field label{font-size:.58rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--navy);opacity:.55}
+.field input,.field select,.field textarea{font-family:inherit;font-size:.8rem;color:var(--charcoal);background:#fff;border:1.5px solid rgba(15,48,83,.15);border-radius:9px;padding:.58rem .82rem;transition:border-color .18s;outline:none;width:100%}
+.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--navy)}.field textarea{resize:vertical;min-height:74px}
+.modal-overlay{position:fixed;inset:0;background:rgba(15,48,83,.35);display:none;align-items:center;justify-content:center;z-index:999;padding:1.5rem}
+.modal{background:#fff;border-radius:16px;border:1px solid var(--line);width:100%;max-width:690px;max-height:90vh;display:flex;flex-direction:column;box-shadow:0 20px 60px rgba(15,48,83,.15)}
+.modal-hd{display:flex;align-items:center;justify-content:space-between;padding:1.2rem 1.5rem;border-bottom:1px solid var(--line2)}.modal-title{font-size:.9rem;font-weight:800;color:var(--navy)}
+.modal-close{background:none;border:none;font-size:22px;cursor:pointer;color:#5E6C84;line-height:1;padding:2px 6px;border-radius:4px;opacity:.55}.modal-close:hover{opacity:1;background:var(--soft)}
+.modal-body{padding:1.4rem 1.5rem;overflow:auto}.modal-ft{padding:.95rem 1.5rem;border-top:1px solid var(--line2);display:flex;justify-content:flex-end;gap:.6rem;background:var(--soft)}
+.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%) translateY(20px);background:var(--navy);color:#fff;padding:.75rem 1rem;border-radius:10px;font-size:.75rem;font-weight:700;opacity:0;pointer-events:none;transition:all .2s;z-index:1200}.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+.cloud-status{position:fixed;right:18px;bottom:18px;z-index:80;background:#fff;border:1px solid var(--line);border-radius:100px;padding:6px 11px;display:flex;align-items:center;gap:6px;font-size:.58rem;font-weight:800;letter-spacing:.07em;text-transform:uppercase;color:var(--navy);box-shadow:0 8px 24px rgba(15,48,83,.08)}
+.cloud-status .dot{background:var(--amber)}.cloud-status.ok .dot{background:var(--green)}.cloud-status.bad .dot{background:var(--red)}
+.row-tools{display:flex;gap:5px;white-space:nowrap}.tool-btn{border:1px solid rgba(15,48,83,.18);background:#fff;color:var(--navy);border-radius:7px;padding:4px 8px;font-family:inherit;font-size:.62rem;font-weight:800;cursor:pointer}.tool-btn:hover{background:var(--soft)}.tool-btn.danger{color:#B91C1C;border-color:rgba(225,93,93,.28);background:rgba(225,93,93,.06)}
+@media(max-width:800px){.nav{padding:.7rem 1rem}.nav-right{display:none}.tabs{top:48px;padding:0 1rem}.main{padding:1.5rem 1rem 3rem}.g2,.g3,.g4,.form-grid{grid-template-columns:1fr}.road-item{grid-template-columns:1fr}.section-head{flex-wrap:wrap}.section-actions{width:100%;margin-left:0}.btn{justify-content:center}.pmo-hero{padding:1.4rem}}
+</style>
+</head>
+<body>
+<nav class="nav">
+  <div class="nav-left">
+    <div class="nav-logo">BombParty PMO</div>
+    <div class="nav-title">Portfolio Governance Console</div>
+  </div>
+  <div class="nav-right">
+    <div class="nav-pill"><span class="dot"></span> Governance Active</div>
+    <div class="nav-date" id="todayLabel"></div>
+    <div class="nav-av">PMO</div>
+  </div>
+</nav>
+
+<div class="tabs">
+  <button class="tab-btn active" onclick="showPane('dashboard',this)"><span class="tab-num">01</span> Dashboard</button>
+  <button class="tab-btn" onclick="showPane('roadmap',this)"><span class="tab-num">02</span> Roadmap</button>
+  <button class="tab-btn" onclick="showPane('priority',this)"><span class="tab-num">03</span> Prioritization</button>
+  <button class="tab-btn" onclick="showPane('steering',this)"><span class="tab-num">04</span> Steering</button>
+  <button class="tab-btn" onclick="showPane('decisions',this)"><span class="tab-num">05</span> Decisions</button>
+  <button class="tab-btn" onclick="showPane('changes',this)"><span class="tab-num">06</span> Change Control</button>
+</div>
+
+<main class="main">
+  <section id="dashboard" class="pane active">
+    <div class="pmo-hero">
+      <div class="eyebrow">Portfolio / Governance</div>
+      <h1>PMO governance command center for <span class="acc">decisions, demand, roadmap, and change.</span></h1>
+      <p>Track the portfolio at a leadership level, keep decision-making visible, and give steering committee meetings one reliable operating view.</p>
+      <div class="hero-actions">
+        <button class="btn btn-soft" onclick="openModal('project')">+ Add Project</button>
+        <button class="btn btn-soft" onclick="openModal('decision')">+ Log Decision</button>
+        <button class="btn btn-soft" onclick="openModal('change')">+ New Change</button>
+      </div>
+    </div>
+    <div class="g4" id="kpis"></div>
+    <div class="g2" style="margin-top:1.15rem">
+      <div class="section-block">
+        <div class="section-head">
+          <div class="section-icon">!</div>
+          <div class="section-head-text"><h3>Executive Attention</h3><span>Items that need leadership focus this cycle.</span></div>
+        </div>
+        <div class="section-body" id="attentionList"></div>
+      </div>
+      <div class="section-block">
+        <div class="section-head">
+          <div class="section-icon">✓</div>
+          <div class="section-head-text"><h3>Governance Cadence</h3><span>Suggested operating rhythm for the PMO team.</span></div>
+        </div>
+        <div class="section-body">
+          <div class="alert green"><strong>Weekly PMO Review:</strong> Intake triage, active blockers, risk movement, ownership checks.</div>
+          <div class="alert"><strong>Biweekly Portfolio Review:</strong> Roadmap shifts, dependencies, priority score changes.</div>
+          <div class="alert amber"><strong>Monthly Steering Committee:</strong> Decisions, escalations, scope and budget changes.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="roadmap" class="pane">
+    <div class="page-header"><h2>Portfolio Roadmap</h2><p>Active and upcoming initiatives by phase, health, owner, and timing.</p></div>
+    <div class="section-block">
+      <div class="section-head">
+        <div class="section-icon">→</div>
+        <div class="section-head-text"><h3>Timeline View</h3><span>Use this as the executive-friendly portfolio lane.</span></div>
+        <div class="section-actions"><button class="btn btn-navy btn-sm" onclick="openModal('project')">Add Project</button></div>
+      </div>
+      <div class="section-body"><div class="roadmap" id="roadmapList"></div></div>
+    </div>
+    <div class="section-block">
+      <div class="section-head"><div class="section-icon">#</div><div class="section-head-text"><h3>Roadmap Register</h3><span>Table view for Confluence/database style tracking.</span></div></div>
+      <div class="section-body no-pad"><div class="tbl-wrap"><table><thead><tr><th>Project</th><th>Owner</th><th>Phase</th><th>Health</th><th>Target</th><th>Strategic Pillar</th><th>Dependency</th><th>Actions</th></tr></thead><tbody id="projectRows"></tbody></table></div></div>
+    </div>
+  </section>
+
+  <section id="priority" class="pane">
+    <div class="page-header"><h2>Project Prioritization Matrix</h2><p>Score demand consistently before accepting work into the portfolio.</p></div>
+    <div class="section-block">
+      <div class="section-head">
+        <div class="section-icon">★</div>
+        <div class="section-head-text"><h3>Priority Queue</h3><span>Value + urgency + alignment minus delivery complexity.</span></div>
+        <div class="section-actions"><button class="btn btn-navy btn-sm" onclick="openModal('priorityItem')">Add Request</button></div>
+      </div>
+      <div class="section-body no-pad"><div class="tbl-wrap"><table><thead><tr><th>Request</th><th>Sponsor</th><th>Alignment</th><th>Value</th><th>Urgency</th><th>Complexity</th><th>Total</th><th>Recommendation</th><th>Actions</th></tr></thead><tbody id="priorityRows"></tbody></table></div></div>
+    </div>
+  </section>
+
+  <section id="steering" class="pane">
+    <div class="page-header"><h2>Steering Committee Hub</h2><p>Prepare each meeting around decisions, escalations, risks, and follow-up actions.</p></div>
+    <div class="section-block">
+      <div class="section-head">
+        <div class="section-icon">§</div>
+        <div class="section-head-text"><h3>Next Steering Agenda</h3><span>Decision-first agenda for leadership review.</span></div>
+      </div>
+      <div class="section-body" id="agendaList"></div>
+    </div>
+    <div class="section-block">
+      <div class="section-head"><div class="section-icon">↳</div><div class="section-head-text"><h3>Action Items</h3><span>Owners and dates captured from governance meetings.</span></div></div>
+      <div class="section-body no-pad"><div class="tbl-wrap"><table><thead><tr><th>Action</th><th>Owner</th><th>Due</th><th>Status</th></tr></thead><tbody id="actionRows"></tbody></table></div></div>
+    </div>
+  </section>
+
+  <section id="decisions" class="pane">
+    <div class="page-header"><h2>Decision Log</h2><p>Capture what was decided, who approved it, and why it matters.</p></div>
+    <div class="section-block">
+      <div class="section-head">
+        <div class="section-icon">✓</div>
+        <div class="section-head-text"><h3>Decision Register</h3><span>Use this for auditability and executive alignment.</span></div>
+        <div class="section-actions"><button class="btn btn-navy btn-sm" onclick="openModal('decision')">Log Decision</button></div>
+      </div>
+      <div class="section-body no-pad"><div class="tbl-wrap"><table><thead><tr><th>Decision</th><th>Area</th><th>Owner</th><th>Needed By</th><th>Status</th><th>Impact</th><th>Actions</th></tr></thead><tbody id="decisionRows"></tbody></table></div></div>
+    </div>
+  </section>
+
+  <section id="changes" class="pane">
+    <div class="page-header"><h2>Change Control Log</h2><p>Review portfolio changes that affect scope, timeline, budget, resources, or priority.</p></div>
+    <div class="section-block">
+      <div class="section-head">
+        <div class="section-icon">Δ</div>
+        <div class="section-head-text"><h3>Change Requests</h3><span>Track requested changes from submission through approval.</span></div>
+        <div class="section-actions"><button class="btn btn-navy btn-sm" onclick="openModal('change')">New Change</button></div>
+      </div>
+      <div class="section-body no-pad"><div class="tbl-wrap"><table><thead><tr><th>Change</th><th>Project</th><th>Type</th><th>Requester</th><th>Impact</th><th>Status</th><th>Target Date</th><th>Actions</th></tr></thead><tbody id="changeRows"></tbody></table></div></div>
+    </div>
+  </section>
+</main>
+
+<div class="modal-overlay" id="dataModal">
+  <div class="modal">
+    <div class="modal-hd"><div class="modal-title" id="modalTitle">Add Entry</div><button class="modal-close" onclick="closeModal()">×</button></div>
+    <div class="modal-body"><div class="form-grid" id="modalFields"></div></div>
+    <div class="modal-ft"><button class="btn btn-outline" onclick="closeModal()">Cancel</button><button class="btn btn-navy" onclick="saveModal()">Save Entry</button></div>
+  </div>
+</div>
+<div class="toast" id="toast">Saved</div>
+<div class="cloud-status bad" id="cloudStatus"><span class="dot"></span><span>Cloud not connected</span></div>
+
+<script>
+const API_BASE=window.PMO_GOVERNANCE_API||'https://pmo-governance.douglasf.workers.dev';
+const REMOTE_ENABLED=!API_BASE.includes('YOUR-WORKER');
+let activeForm='';
+let editingIndex=-1;
+let data={
+  projects:[
+    {name:'Customer Portal Modernization',owner:'A. Rivera',phase:'Build',health:'At Risk',target:'Jun 28, 2026',pillar:'Customer Experience',dependency:'Security review before pilot',progress:58},
+    {name:'Finance Close Automation',owner:'M. Chen',phase:'Discovery',health:'On Track',target:'Aug 15, 2026',pillar:'Operational Efficiency',dependency:'ERP data mapping',progress:32},
+    {name:'Retail Analytics Upgrade',owner:'J. Patel',phase:'UAT',health:'Watch',target:'May 30, 2026',pillar:'Growth Enablement',dependency:'Store manager validation',progress:82}
+  ],
+  priority:[
+    {request:'Vendor Portal Phase 2',sponsor:'Operations',alignment:5,value:4,urgency:4,complexity:3,rec:'Approve'},
+    {request:'Legacy Report Cleanup',sponsor:'Finance',alignment:3,value:3,urgency:2,complexity:2,rec:'Defer'},
+    {request:'Compliance Evidence Hub',sponsor:'Legal',alignment:5,value:4,urgency:5,complexity:2,rec:'Approve'}
+  ],
+  decisions:[
+    {title:'Approve portal pilot scope',area:'Customer Portal',owner:'Steering Committee',needed:'May 17, 2026',status:'Pending',impact:'Defines MVP release boundary'},
+    {title:'Defer analytics mobile view',area:'Retail Analytics',owner:'Product Sponsor',needed:'May 22, 2026',status:'Proposed',impact:'Protects UAT timeline'},
+    {title:'Adopt standard benefits scorecard',area:'Portfolio Governance',owner:'PMO Director',needed:'Approved',status:'Approved',impact:'Normalizes prioritization reviews'}
+  ],
+  changes:[
+    {title:'Extend UAT by one week',project:'Retail Analytics Upgrade',type:'Timeline',requester:'QA Lead',impact:'Moves release from May 30 to Jun 6',status:'Review',target:'May 10, 2026'},
+    {title:'Add SSO requirement to portal pilot',project:'Customer Portal Modernization',type:'Scope',requester:'Security',impact:'Adds security dependency and build effort',status:'Pending Approval',target:'May 13, 2026'},
+    {title:'Reduce discovery workshop count',project:'Finance Close Automation',type:'Budget',requester:'Sponsor',impact:'Saves cost, increases signoff risk',status:'Approved',target:'May 8, 2026'}
+  ],
+  actions:[
+    {action:'Confirm SSO decision path for portal pilot',owner:'Security + PM',due:'May 10, 2026',status:'Open'},
+    {action:'Refresh portfolio scorecard before PMO review',owner:'PMO Analyst',due:'May 12, 2026',status:'In Progress'},
+    {action:'Send steering pre-read',owner:'PMO Director',due:'May 14, 2026',status:'Open'}
+  ]
+};
+const forms={
+  project:{title:'Add Portfolio Project',target:'projects',fields:[['name','Project Name'],['owner','Owner'],['phase','Phase'],['health','Health','select','On Track|Watch|At Risk|Blocked'],['target','Target Date'],['pillar','Strategic Pillar'],['dependency','Dependency / Note','textarea'],['progress','Progress %','number']]},
+  priorityItem:{title:'Add Prioritization Request',target:'priority',fields:[['request','Request Name'],['sponsor','Sponsor'],['alignment','Alignment Score','number'],['value','Business Value','number'],['urgency','Urgency','number'],['complexity','Complexity','number'],['rec','Recommendation','select','Approve|Defer|Reject|Needs Review']]},
+  decision:{title:'Log Decision',target:'decisions',fields:[['title','Decision Title'],['area','Portfolio Area'],['owner','Decision Owner'],['needed','Needed By'],['status','Status','select','Pending|Proposed|Approved|Rejected'],['impact','Impact','textarea']]},
+  change:{title:'New Change Request',target:'changes',fields:[['title','Change Title'],['project','Related Project'],['type','Change Type','select','Scope|Timeline|Budget|Resource|Priority'],['requester','Requested By'],['impact','Impact Assessment','textarea'],['status','Status','select','Draft|Review|Pending Approval|Approved|Rejected'],['target','Target Date']]}
+};
+function authHeaders(){
+  let key=sessionStorage.getItem('bp_pmo_edit_key')||'';
+  if(!key){
+    key=prompt('Enter the PMO edit key for cloud saves:')||'';
+    if(key) sessionStorage.setItem('bp_pmo_edit_key',key);
+  }
+  return key?{'X-PMO-Key':key}:{};
+}
+function setCloudStatus(text,state='bad'){
+  const el=document.getElementById('cloudStatus');
+  el.className='cloud-status '+state;
+  el.querySelector('span:last-child').textContent=text;
+}
+async function loadRemote(){
+  if(!REMOTE_ENABLED){setCloudStatus('Configure Worker URL','bad');render();return}
+  try{
+    setCloudStatus('Loading cloud data','');
+    const res=await fetch(API_BASE.replace(/\/$/,'')+'/data',{cache:'no-store'});
+    if(!res.ok) throw new Error('Load failed');
+    const remote=await res.json();
+    data=remote;
+    setCloudStatus('Cloud connected','ok');
+    render();
+  }catch(err){
+    setCloudStatus('Cloud load failed','bad');
+    render();
+    toast('Could not load cloud data',true);
+  }
+}
+async function save(){
+  if(!REMOTE_ENABLED){toast('Add your Cloudflare Worker URL first',true);return false}
+  try{
+    setCloudStatus('Saving','');
+    const res=await fetch(API_BASE.replace(/\/$/,'')+'/data',{
+      method:'PUT',
+      headers:{'Content-Type':'application/json',...authHeaders()},
+      body:JSON.stringify(data)
+    });
+    if(res.status===401){sessionStorage.removeItem('bp_pmo_edit_key');throw new Error('Unauthorized')}
+    if(!res.ok) throw new Error('Save failed');
+    setCloudStatus('Saved to GitHub','ok');
+    return true;
+  }catch(err){
+    setCloudStatus('Save failed','bad');
+    toast(err.message==='Unauthorized'?'Wrong edit key':'Cloud save failed',true);
+    return false;
+  }
+}
+function badge(text){
+  const t=(text||'').toLowerCase();
+  let c='badge-blue';
+  if(t.includes('track')||t.includes('approved')||t.includes('approve')) c='badge-green';
+  if(t.includes('risk')||t.includes('blocked')||t.includes('reject')) c='badge-red';
+  if(t.includes('watch')||t.includes('pending')||t.includes('review')||t.includes('defer')) c='badge-amber';
+  if(t.includes('proposed')||t.includes('build')) c='badge-purple';
+  if(t.includes('uat')||t.includes('timeline')||t.includes('scope')) c='badge-teal';
+  return `<span class="badge ${c}">${text}</span>`;
+}
+function showPane(id,btn){document.querySelectorAll('.pane').forEach(p=>p.classList.remove('active'));document.getElementById(id).classList.add('active');document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));btn.classList.add('active')}
+function render(){
+  document.getElementById('todayLabel').textContent=new Date().toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'});
+  const atRisk=data.projects.filter(p=>p.health==='At Risk'||p.health==='Blocked').length;
+  const pendingDec=data.decisions.filter(d=>d.status!=='Approved'&&d.status!=='Rejected').length;
+  const openChanges=data.changes.filter(c=>c.status!=='Approved'&&c.status!=='Rejected').length;
+  const approvedPriority=data.priority.filter(p=>p.rec==='Approve').length;
+  document.getElementById('kpis').innerHTML=[
+    ['Active Projects',data.projects.length,'Portfolio items in flight'],
+    ['At Risk',atRisk,'Need PMO attention'],
+    ['Open Decisions',pendingDec,'Waiting for alignment'],
+    ['Open Changes',openChanges,'Scope, timing, budget, or priority']
+  ].map(k=>`<div class="kpi"><div class="kpi-label">${k[0]}</div><div class="kpi-value">${k[1]}</div><div class="kpi-sub">${k[2]}</div></div>`).join('');
+  const attention=[
+    `<strong>${pendingDec} decisions</strong> need closure before the next steering committee.`,
+    `<strong>${openChanges} change requests</strong> are active across the portfolio.`,
+    `<strong>${approvedPriority} proposed requests</strong> are currently recommended for approval.`
+  ];
+  document.getElementById('attentionList').innerHTML=attention.map((x,i)=>`<div class="alert ${i===0?'amber':i===1?'red':''}">${x}</div>`).join('');
+  document.getElementById('roadmapList').innerHTML=data.projects.map(p=>{
+    const cls=p.health==='At Risk'||p.health==='Blocked'?'red':p.health==='Watch'?'amber':'green';
+    return `<div class="road-item"><div><div class="td-bold">${p.name}</div><div class="road-date">${p.phase} • ${p.target}</div></div><div class="bar ${cls}"><span style="width:${Math.max(5,Math.min(100,Number(p.progress)||0))}%"></span></div><div>${badge(p.health)}</div></div>`;
+  }).join('');
+  document.getElementById('projectRows').innerHTML=data.projects.map((p,i)=>`<tr><td><div class="td-bold">${p.name}</div><div class="td-muted">${p.progress||0}% complete</div></td><td>${p.owner}</td><td>${badge(p.phase)}</td><td>${badge(p.health)}</td><td>${p.target}</td><td>${p.pillar}</td><td>${p.dependency}</td><td>${rowTools('project',i)}</td></tr>`).join('');
+  document.getElementById('priorityRows').innerHTML=data.priority.map((p,i)=>{
+    const total=Number(p.alignment)+Number(p.value)+Number(p.urgency)-Number(p.complexity);
+    return `<tr><td class="td-bold">${p.request}</td><td>${p.sponsor}</td><td>${p.alignment}</td><td>${p.value}</td><td>${p.urgency}</td><td>${p.complexity}</td><td class="score">${total} <small>/ 15</small></td><td>${badge(p.rec)}</td><td>${rowTools('priorityItem',i)}</td></tr>`;
+  }).join('');
+  document.getElementById('agendaList').innerHTML=[
+    'Review at-risk Customer Portal security dependency',
+    'Approve or defer active portfolio change requests',
+    'Confirm priority recommendations for next intake cycle',
+    'Close decisions with May 2026 due dates'
+  ].map((a,i)=>`<div class="alert ${i===0?'red':i===1?'amber':''}"><strong>${String(i+1).padStart(2,'0')}.</strong> ${a}</div>`).join('');
+  document.getElementById('actionRows').innerHTML=data.actions.map(a=>`<tr><td class="td-bold">${a.action}</td><td>${a.owner}</td><td>${a.due}</td><td>${badge(a.status)}</td></tr>`).join('');
+  document.getElementById('decisionRows').innerHTML=data.decisions.map((d,i)=>`<tr><td class="td-bold">${d.title}</td><td>${d.area}</td><td>${d.owner}</td><td>${d.needed}</td><td>${badge(d.status)}</td><td>${d.impact}</td><td>${rowTools('decision',i)}</td></tr>`).join('');
+  document.getElementById('changeRows').innerHTML=data.changes.map((c,i)=>`<tr><td class="td-bold">${c.title}</td><td>${c.project}</td><td>${badge(c.type)}</td><td>${c.requester}</td><td>${c.impact}</td><td>${badge(c.status)}</td><td>${c.target}</td><td>${rowTools('change',i)}</td></tr>`).join('');
+}
+function rowTools(type,index){return `<div class="row-tools"><button class="tool-btn" onclick="editItem('${type}',${index})">Edit</button><button class="tool-btn danger" onclick="deleteItem('${type}',${index})">Delete</button></div>`}
+function openModal(type){
+  activeForm=type; editingIndex=-1; const f=forms[type];
+  document.getElementById('modalTitle').textContent=f.title;
+  document.getElementById('modalFields').innerHTML=f.fields.map(([id,label,type='text',opts=''])=>{
+    const cls=type==='textarea'?'field full':'field';
+    let input= type==='textarea' ? `<textarea id="mf_${id}"></textarea>` : type==='select' ? `<select id="mf_${id}">${opts.split('|').map(o=>`<option>${o}</option>`).join('')}</select>` : `<input id="mf_${id}" type="${type}">`;
+    return `<div class="${cls}"><label>${label}</label>${input}</div>`;
+  }).join('');
+  document.getElementById('dataModal').style.display='flex';
+}
+function editItem(type,index){
+  activeForm=type; editingIndex=index; const f=forms[type]; const item=data[f.target][index];
+  openModal(type); editingIndex=index;
+  document.getElementById('modalTitle').textContent='Edit '+f.title.replace(/^Add |^New |^Log /,'');
+  f.fields.forEach(([id])=>{const el=document.getElementById('mf_'+id);if(el)el.value=item[id]||''});
+}
+async function deleteItem(type,index){
+  const f=forms[type]; const item=data[f.target][index];
+  const label=item.name||item.request||item.title||'this entry';
+  if(!confirm(`Delete "${label}"?`)) return;
+  const old=[...data[f.target]];
+  data[f.target].splice(index,1); render();
+  if(await save()) toast('Entry deleted'); else {data[f.target]=old; render();}
+}
+function closeModal(){document.getElementById('dataModal').style.display='none'}
+async function saveModal(){
+  const f=forms[activeForm]; const item={};
+  f.fields.forEach(([id])=>{item[id]=document.getElementById('mf_'+id).value.trim()});
+  if(!Object.values(item).some(Boolean)){toast('Add at least one value',true);return}
+  const old=[...data[f.target]];
+  if(editingIndex>=0) data[f.target][editingIndex]=item; else data[f.target].unshift(item);
+  render();
+  if(await save()){closeModal();toast(editingIndex>=0?'Entry updated':'Entry saved')}
+  else {data[f.target]=old;render();}
+}
+function toast(msg,err=false){const t=document.getElementById('toast');t.textContent=msg;t.style.background=err?'#BF2600':'#0F3053';t.classList.add('show');clearTimeout(window.toastTimer);window.toastTimer=setTimeout(()=>t.classList.remove('show'),2400)}
+document.getElementById('dataModal').addEventListener('click',e=>{if(e.target.id==='dataModal')closeModal()});
+loadRemote();
+</script>
+</body>
+</html>
