@@ -1,16 +1,6 @@
 {
   "projects": [
     {
-      "name": "Finance Close Automation",
-      "owner": "M. Chen",
-      "phase": "Discovery",
-      "health": "On Track",
-      "target": "Aug 15, 2026",
-      "pillar": "Operational Efficiency",
-      "dependency": "ERP data mapping",
-      "progress": 32
-    },
-    {
       "name": "Retail Analytics Upgrade",
       "owner": "J. Patel",
       "phase": "UAT",
