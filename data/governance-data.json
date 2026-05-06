@@ -57,12 +57,5 @@
     }
   ],
   "agenda": [],
-  "actions": [
-    {
-      "action": "Send steering pre-read",
-      "owner": "PMO Director",
-      "due": "May 14, 2026",
-      "status": "Open"
-    }
-  ]
+  "actions": []
 }
