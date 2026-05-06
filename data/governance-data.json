@@ -31,14 +31,6 @@
   ],
   "decisions": [
     {
-      "title": "Approve portal pilot scope",
-      "area": "Customer Portal",
-      "owner": "Steering Committee",
-      "needed": "May 17, 2026",
-      "status": "Pending",
-      "impact": "Defines MVP release boundary"
-    },
-    {
       "title": "Defer analytics mobile view",
       "area": "Retail Analytics",
       "owner": "Product Sponsor",
