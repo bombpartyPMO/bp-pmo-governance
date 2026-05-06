@@ -1,0 +1,156 @@
+{
+  "projects": [
+    {
+      "name": "Customer Portal Modernization",
+      "owner": "A. Rivera",
+      "phase": "Build",
+      "health": "At Risk",
+      "target": "Jun 28, 2026",
+      "pillar": "Customer Experience",
+      "dependency": "Security review before pilot",
+      "progress": 58
+    },
+    {
+      "name": "Finance Close Automation",
+      "owner": "M. Chen",
+      "phase": "Discovery",
+      "health": "On Track",
+      "target": "Aug 15, 2026",
+      "pillar": "Operational Efficiency",
+      "dependency": "ERP data mapping",
+      "progress": 32
+    },
+    {
+      "name": "Retail Analytics Upgrade",
+      "owner": "J. Patel",
+      "phase": "UAT",
+      "health": "Watch",
+      "target": "May 30, 2026",
+      "pillar": "Growth Enablement",
+      "dependency": "Store manager validation",
+      "progress": 82
+    }
+  ],
+  "priority": [
+    {
+      "request": "Vendor Portal Phase 2",
+      "sponsor": "Operations",
+      "alignment": 5,
+      "value": 4,
+      "urgency": 4,
+      "complexity": 3,
+      "rec": "Approve"
+    },
+    {
+      "request": "Legacy Report Cleanup",
+      "sponsor": "Finance",
+      "alignment": 3,
+      "value": 3,
+      "urgency": 2,
+      "complexity": 2,
+      "rec": "Defer"
+    },
+    {
+      "request": "Compliance Evidence Hub",
+      "sponsor": "Legal",
+      "alignment": 5,
+      "value": 4,
+      "urgency": 5,
+      "complexity": 2,
+      "rec": "Approve"
+    }
+  ],
+  "decisions": [
+    {
+      "title": "Approve portal pilot scope",
+      "area": "Customer Portal",
+      "owner": "Steering Committee",
+      "needed": "May 17, 2026",
+      "status": "Pending",
+      "impact": "Defines MVP release boundary"
+    },
+    {
+      "title": "Defer analytics mobile view",
+      "area": "Retail Analytics",
+      "owner": "Product Sponsor",
+      "needed": "May 22, 2026",
+      "status": "Proposed",
+      "impact": "Protects UAT timeline"
+    },
+    {
+      "title": "Adopt standard benefits scorecard",
+      "area": "Portfolio Governance",
+      "owner": "PMO Director",
+      "needed": "Approved",
+      "status": "Approved",
+      "impact": "Normalizes prioritization reviews"
+    }
+  ],
+  "changes": [
+    {
+      "title": "Extend UAT by one week",
+      "project": "Retail Analytics Upgrade",
+      "type": "Timeline",
+      "requester": "QA Lead",
+      "impact": "Moves release from May 30 to Jun 6",
+      "status": "Review",
+      "target": "May 10, 2026"
+    },
+    {
+      "title": "Add SSO requirement to portal pilot",
+      "project": "Customer Portal Modernization",
+      "type": "Scope",
+      "requester": "Security",
+      "impact": "Adds security dependency and build effort",
+      "status": "Pending Approval",
+      "target": "May 13, 2026"
+    },
+    {
+      "title": "Reduce discovery workshop count",
+      "project": "Finance Close Automation",
+      "type": "Budget",
+      "requester": "Sponsor",
+      "impact": "Saves cost, increases signoff risk",
+      "status": "Approved",
+      "target": "May 8, 2026"
+    }
+  ],
+  "agenda": [
+    {
+      "item": "Review at-risk Customer Portal security dependency",
+      "tone": "Red"
+    },
+    {
+      "item": "Approve or defer active portfolio change requests",
+      "tone": "Amber"
+    },
+    {
+      "item": "Confirm priority recommendations for next intake cycle",
+      "tone": "Standard"
+    },
+    {
+      "item": "Close decisions with May 2026 due dates",
+      "tone": "Standard"
+    }
+  ],
+  "actions": [
+    {
+      "action": "Confirm SSO decision path for portal pilot",
+      "owner": "Security + PM",
+      "due": "May 10, 2026",
+      "status": "Open"
+    },
+    {
+      "action": "Refresh portfolio scorecard before PMO review",
+      "owner": "PMO Analyst",
+      "due": "May 12, 2026",
+      "status": "In Progress"
+    },
+    {
+      "action": "Send steering pre-read",
+      "owner": "PMO Director",
+      "due": "May 14, 2026",
+      "status": "Open"
+    }
+  ]
+}
