@@ -3,14 +3,6 @@
   "priority": [],
   "decisions": [
     {
-      "title": "Defer analytics mobile view",
-      "area": "Retail Analytics",
-      "owner": "Product Sponsor",
-      "needed": "May 22, 2026",
-      "status": "Proposed",
-      "impact": "Protects UAT timeline"
-    },
-    {
       "title": "Adopt standard benefits scorecard",
       "area": "Portfolio Governance",
       "owner": "PMO Director",
