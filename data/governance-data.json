@@ -2,15 +2,6 @@
   "projects": [],
   "priority": [
     {
-      "request": "Legacy Report Cleanup",
-      "sponsor": "Finance",
-      "alignment": 3,
-      "value": 3,
-      "urgency": 2,
-      "complexity": 2,
-      "rec": "Defer"
-    },
-    {
       "request": "Compliance Evidence Hub",
       "sponsor": "Legal",
       "alignment": 5,
