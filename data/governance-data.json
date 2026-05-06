@@ -29,16 +29,7 @@
       "rec": "Approve"
     }
   ],
-  "decisions": [
-    {
-      "title": "Adopt standard benefits scorecard",
-      "area": "Portfolio Governance",
-      "owner": "PMO Director",
-      "needed": "Approved",
-      "status": "Approved",
-      "impact": "Normalizes prioritization reviews"
-    }
-  ],
+  "decisions": [],
   "changes": [
     {
       "title": "Extend UAT by one week",
