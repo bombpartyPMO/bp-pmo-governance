@@ -1,16 +1,5 @@
 {
-  "projects": [
-    {
-      "name": "Retail Analytics Upgrade",
-      "owner": "J. Patel",
-      "phase": "UAT",
-      "health": "Watch",
-      "target": "May 30, 2026",
-      "pillar": "Growth Enablement",
-      "dependency": "Store manager validation",
-      "progress": 82
-    }
-  ],
+  "projects": [],
   "priority": [
     {
       "request": "Vendor Portal Phase 2",
